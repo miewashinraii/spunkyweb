@@ -427,6 +427,36 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(section);
   });
 
+  function lazyLoadBahteraVideo() {
+  const section = document.getElementById('bahtera');
+  const video = section ? section.querySelector('.bahtera-bg-video') : null;
+  if (!video) return;
+
+  const source = video.querySelector('source');
+
+  let loaded = false;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !loaded) {
+        loaded = true;
+
+        // move data-src → src ONLY when needed
+        if (source && source.dataset.src) {
+          source.src = source.dataset.src;
+          video.load(); // triggers actual download
+        }
+
+        io.disconnect();
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  io.observe(section);
+}
+
   // ensure bahtera video attempts to autoplay reliably and controls remain interactive
   (function initBahteraAutoplay() {
     const section = document.getElementById('bahtera');
