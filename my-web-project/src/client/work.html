@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our Work</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="home-btn" href="index.html" aria-label="Home">
+    <img id="home-logo-small" src="assets/images/spunky-logo.png" alt="Home">
+  </a>
+
+  <header class="topbar">
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav id="navMenu" class="nav-menu" hidden>
+      <a href="project.html">Project : Bahtera</a>
+      <a href="work.html">Our Work</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- sections container: snap scrolling -->
+  <div class="sections" id="sections">
+    <section class="section hero" id="home">
+      <div class="section-inner" style="width:100%;max-width:1100px;">
+        <div class="media-row">
+          <div class="media-left">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/CuKIZaucmAg?si=85LPvYfkXOGUqKc_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <aside class="media-right" aria-label="Project poster and details">
+            <div class="poster">
+              <!-- replace src with your poster image -->
+              <img src="assets/images/project-poster.jpg" alt="Project poster" onerror="this.style.display='none'">
+            </div>
+
+            <div class="details" id="details-credits">
+              <h2 class="accent-heading">Credits</h2>
+
+              <div class="credits collapsed" id="credits-list">
+                <p><b>Writer:</b> Abid Danish, Hana Roanne</p>
+                <p><b>Director:</b> Abid Danish</p>
+                <p><b>Producer:</b> Cheah Yi Le</p>
+                <p><b>Executive Producer:</b> Ashaari Arifin, Jan Chan</p>
+                <p><b>Associate Producer:</b> Adam Zainal</p>
+                <p><b>Production Manager:</b> Sashwin Chandrasegeran</p>
+                <p><b>Assistant Director:</b> Alyssia Cheang</p>
+                <p><b>Script Supervisor:</b> Afif Ikhwan, Aliyana Rezana</p>
+                <p><b>Director of Photography:</b> Khuzairi "Cai"</p>
+                <p><b>1st Assistant Camera:</b> Naviin Veera</p>
+                <p><b>Gaffer:</b> Harith Razlan</p>
+                <p><b>Key Grip:</b> Varten Tharumalingam</p>
+                <p><b>On-Set Mixer:</b> Cheah Yi Le</p>
+                <p><b>Boom Operator:</b> Goh Hong Zhe, Cheah Yi Le</p>
+                <p><b>Production Designer:</b> Aliyana Rezana</p>
+                <p><b>continue...</b></p>
+              </div>
+
+              <button class="read-more" aria-expanded="false" aria-controls="credits-list">Read more</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section achievements" id="achievements">
+      <div class="section-inner">
+        <h2>Description</h2>
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa facilis quibusdam aliquid deleniti porro placeat! Aperiam, eum facere dolores dignissimos ipsum sed voluptate numquam id, aliquam voluptatum iusto praesentium eius!</p>
+        <!-- example items -->
+        <div class="cards">
+          <div class="card">Lorem</div>
+          <div class="card">Lorem</div>
+          <div class="card">Lorem</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

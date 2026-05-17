@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spunky — Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="fullpage">
+  <!-- top hover zone (transparent) -->
+  <div id="topHoverZone" class="top-hover-zone" aria-hidden="true"></div>
+
+  <!-- mini home button (starts hidden; JS/CSS will toggle .visible) -->
+  <a class="home-btn" id="homeBtn" href="#home" aria-label="Home" hidden>
+    <img id="home-logo-small" src="assets/images/spunkymini.png" alt="Home">
+  </a>
+
+  <header class="topbar" id="topbar">
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav id="navMenu" class="nav-menu" hidden>
+      <!-- changed: same-page anchor to section #achievements (Project : Our Bahtera) -->
+      <a href="#bahtera" data-scroll>Project : Our Bahtera</a>
+      <a href="#work" data-scroll>Our Work</a>
+      <a href="#contact" data-scroll>Contact</a>
+      <a href="#faq" data-scroll>FAQ</a>
+    </nav>
+  </header>
+
+  <!-- sections container: snap scrolling -->
+  <div class="sections" id="sections">
+    <section class="section hero has-media" id="home">
+      <!-- full-bleed background + overlay (direct children of section) -->
+      <video class="hero-bg" src="assets/videos/BTS1.mp4" alt="" aria-hidden="true" autoplay loop muted playsinline></video>
+      <!-- <img class="about-bg" src="assets/images/background.jpg" alt="" aria-hidden="true"> -->
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="brand">
+        <!-- main logo (id used by CSS) -->
+        <img id="main-logo" src="assets/images/manpng.png" alt="Spunky Studio Logo" class="logo">
+
+        <!-- laurels: three small badges directly under logo -->
+        <div class="laurels" aria-hidden="true">
+          <img class="laurel" src="assets/images/laurel-1.png" alt="">
+          <img class="laurel" src="assets/images/laurel-2.png" alt="">
+          <img class="laurel" src="assets/images/laurel-3.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="section bahtera-slideshow-section" id="bahtera-gallery">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Project : Bahtera</span>
+        </div>
+        <div class="bahtera-gallery-slide">
+            <img src="assets/images/stills-2.jpg" alt="Bahtera still">
+        </div>
+
+        <div class="bahtera-gallery-slide">
+            <img src="assets/images/stills-3.jpg" alt="Bahtera still">
+        </div>
+
+        <div class="bahtera-gallery-slide">
+            <img src="assets/images/stills-4.jpg" alt="Bahtera still">
+        </div>
+
+        <div class="bahtera-gallery-content">
+            <h1>Bahtera</h1>
+
+            <p>
+            A missing mother. A forbidden forest. An ancient ritual that pulls a family into a nightmare.
+            </p>
+
+            <p>
+            Siblings Abang and Melur tumble into a ritual-fueled descent — deception, possession and a tragic reckoning.
+            </p>
+
+            <a class="btn btn-watch" href="#bahtera">Watch Teaser</a>
+            <a class="btn btn-details" href="#project-details">Details</a>
+        </div>
+    </section>
+
+    <section class="section trailer-spotlight" id="bahtera-preview">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Project : Bahtera</span>
+        </div>
+    <div class="section-inner">
+        <div class="poster-column">
+        <div class="poster-frame">
+            <img
+            src="assets/images/poster-bahtera.jpeg"
+            alt="Bahtera — Teaser Poster"
+            class="poster-img"
+            />
+        </div>
+        </div>
+
+        <div class="copy-column">
+        <div class="right-slideshow" aria-hidden="true">
+            <img src="assets/images/stills-2.jpg" alt="">
+            <img src="assets/images/stills-3.jpg" alt="">
+            <img src="assets/images/stills-4.jpg" alt="">
+        </div>
+
+        <div class="copy-content">
+            <h1 class="poster-title">Bahtera</h1>
+
+            <p class="poster-tag">
+            A missing mother. A forbidden forest. An ancient ritual that pulls a family into a nightmare.
+            </p>
+
+            <p class="poster-lead">
+            Siblings Abang and Melur tumble into a ritual-fueled descent — deception, possession and a tragic reckoning.
+            </p>
+
+            <div class="poster-actions">
+            <a id="play-bahtera-btn" class="btn btn-watch" href="#bahtera">Watch Teaser</a>
+            <a class="btn btn-details" href="#project-details">Details</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="section project-details" id="project-details">
+        <img class="project-details-bg" src="assets/images/stills-10.jpg" alt="" aria-hidden="true">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Project Details</span>
+        </div>
+
+        <div class="project-details-inner">
+            <div class="project-details-heading">
+            <p class="eyebrow">Bahtera</p>
+            <h2>Project Details</h2>
+            </div>
+
+            <div class="project-details-content">
+            <article class="detail-block detail-logline">
+                <h3>Logline</h3>
+                <p>
+                After people begin disappearing in a forbidden forest, two siblings are forced to venture inside
+                to save their missing mother, only to encounter a mysterious woman with a deadly agenda.
+                </p>
+            </article>
+
+            <article class="detail-block detail-synopsis">
+                <h3>Short Synopsis</h3>
+                <p>
+                Driven by the disappearance of their mother, siblings Abang and Melur venture into a forbidden forest.
+                Meanwhile Bayu, a mysterious woman with white eyes, performs a ritual. After discovering their mother’s
+                hairpin, tusuk konde, in the forest, Melur falls mysteriously ill, allowing Bayu to manipulate the situation
+                by sending Abang towards a dangerous cave in search of their mother. This deception leads to a horrific
+                climax where Abang finds Melur in the cave, seemingly possessed. She brutally attacks him. The struggle
+                between these siblings ends in total tragedy.
+                </p>
+            </article>
+
+            <dl class="project-meta">
+                <div>
+                <dt>Genre</dt>
+                <dd>Folklore Horror, Mystery</dd>
+                </div>
+                <div>
+                <dt>Format</dt>
+                <dd>Digital</dd>
+                </div>
+                <div>
+                <dt>Runtime</dt>
+                <dd>15 Minutes</dd>
+                </div>
+            </dl>
+            </div>
+        </div>
+    </section>    
+
+    <section class="section project-details" id="project-details">
+        <img class="project-details-bg" src="assets/images/stills-10.jpg" alt="" aria-hidden="true">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Project Details</span>
+        </div>
+
+        <div class="project-details-inner">
+            <div class="project-details-heading">
+            <p class="eyebrow">Bahtera</p>
+            <h2>Project Details</h2>
+            <img
+                class="project-details-poster"
+                src="assets/images/poster-bahtera.jpeg"
+                alt="Bahtera poster"
+            >
+            </div>
+
+            <div class="project-details-content">
+            <article class="detail-block detail-logline">
+                <h3>Logline</h3>
+                <p>
+                After people begin disappearing in a forbidden forest, two siblings are forced to venture inside
+                to save their missing mother, only to encounter a mysterious woman with a deadly agenda.
+                </p>
+            </article>
+
+            <article class="detail-block detail-synopsis">
+                <h3>Short Synopsis</h3>
+                <p>
+                Driven by the disappearance of their mother, siblings Abang and Melur venture into a forbidden forest.
+                Meanwhile Bayu, a mysterious woman with white eyes, performs a ritual. After discovering their mother’s
+                hairpin, tusuk konde, in the forest, Melur falls mysteriously ill, allowing Bayu to manipulate the situation
+                by sending Abang towards a dangerous cave in search of their mother. This deception leads to a horrific
+                climax where Abang finds Melur in the cave, seemingly possessed. She brutally attacks him. The struggle
+                between these siblings ends in total tragedy.
+                </p>
+            </article>
+
+            <dl class="project-meta">
+                <div>
+                <dt>Genre</dt>
+                <dd>Folklore Horror, Mystery</dd>
+                </div>
+                <div>
+                <dt>Format</dt>
+                <dd>Digital</dd>
+                </div>
+                <div>
+                <dt>Runtime</dt>
+                <dd>15 Minutes</dd>
+                </div>
+            </dl>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section bahtera has-media" id="bahtera">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Official Teaser</span>
+        </div>
+      <video
+        class="bahtera-bg-video"
+        controls
+        autoplay
+        loop
+        playsinline
+        preload="auto"
+        poster="assets/images/poster-bahtera.jpeg"
+        aria-hidden="false"
+      >
+        <source src="assets/videos/bahtera.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- sound toggle shown when the section/video is active -->
+      <button class="video-sound-toggle" id="bahteraSoundToggle" aria-pressed="false" aria-label="Toggle sound" hidden>Mute</button>
+    </section>
+
+    <section class="section stills cinematic" id="stills-2">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Mains</span>
+        </div>
+      <div class="section-inner">
+        <div class="stills-hover-title" aria-hidden="true"></div>
+        <div class="stills-hover-desc" aria-hidden="true"></div>
+
+        <div class="projects-grid">
+          <div class="project-card" data-title="Abang" data-desc="Pulled into the forest’s deceit, a brother’s desperate search collapses into a primal, tragic reckoning.">
+            <div class="img-wrap">
+              <img src="assets/images/stills-8.jpg" alt="Project 1">
+            </div>
+          </div>
+
+          <div class="project-card" data-title="Melur" data-desc="Her discovery awakens an ancient hunger. Innocence consumed, and a loved one transformed into nightmare.">
+            <div class="img-wrap">
+              <img src="assets/images/stills-6.jpg" alt="Project 2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stills" id="stills">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Stills</span>
+        </div>
+      <div class="section-inner">
+        <div class="stills-header">
+            <button class="stills-nav-btn" id="stillsPrev" type="button" aria-label="Previous stills set">‹</button>
+            <h2 class="stills-section-title">Mood &amp; Tone</h2>
+            <button class="stills-nav-btn" id="stillsNext" type="button" aria-label="Next stills set">›</button>
+        </div>
+         <div class="projects-grid stills-gallery-grid" id="stillsGallery">
+            <div class="project-card">
+                <div class="img-wrap">
+                <img src="assets/images/stills-1.jpg" alt="Bahtera still">
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="img-wrap">
+                <img src="assets/images/stills-3.jpg" alt="Bahtera still">
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="img-wrap">
+                <img src="assets/images/stills-2.jpg" alt="Bahtera still">
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="img-wrap">
+                <img src="assets/images/stills-4.jpg" alt="Bahtera still">
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation section: add your QR to assets/images/QR_SPUNKY.png -->
+    <section class="section donation" id="donate">
+        <div class="section-kicker">
+            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+            <span>Support Us</span>
+        </div>
+        <video class="donation-bg" autoplay muted loop playsinline aria-hidden="true">
+            <source src="assets/videos/BTS2.mp4" type="video/mp4">
+        </video>
+      <div class="section-inner">
+        <h2>Support Bahtera — Donate via DuitNow</h2>
+        <p class="lead">Scan the QR with your banking app (DuitNow) to make a secure transfer.</p>
+
+        <div class="donation-grid">
+          <div class="qr-wrap" aria-hidden="false">
+            <img src="assets/images/QR_SPUNKY.png" alt="DuitNow QR code for donations" />
+          </div>
+
+          <div class="donate-info">
+            <!-- <p class="donate-copy">Prefer to type instead of scanning? Use this DuitNow ID:</p>
+            <p class="donate-link"><strong id="donateDuitNowId">SPUNKY.STUDIO.123</strong></p> -->
+            <!-- <div class="donation-actions">
+              <span class="btn btn-secondary" aria-hidden="true">Scan QR to donate</span>
+            </div> -->
+            <p class="donation-note" style="margin-top:12px;color:#ccc;font-size:0.95rem;">
+              Thank you — every contribution helps bring this film to life.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about team-section has-media" id="about">
+    <img class="about-bg" src="assets/images/abt.JPG" alt="" aria-hidden="true">
+
+    <div class="section-kicker">
+        <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+        <span>About Us</span>
+    </div>
+
+    <div class="team-inner">
+        <div class="team-header">
+        <button class="team-nav-btn" id="teamPrev" type="button" aria-label="Previous team members">‹</button>
+        <h2>Our Team</h2>
+        <button class="team-nav-btn" id="teamNext" type="button" aria-label="Next team members">›</button>
+        </div>
+
+        <div class="team-grid" id="teamGrid">
+        <article class="team-card">
+            <img src="assets/images/stills-1.jpg" alt="Abid Danish">
+            <h3>Director</h3>
+            <p>Abid Danish</p>
+        </article>
+
+        <article class="team-card">
+            <img src="assets/images/stills-2.jpg" alt="Nurin Mysara">
+            <h3>Producer</h3>
+            <p>Nurin Mysara</p>
+        </article>
+
+        <article class="team-card">
+            <img src="assets/images/stills-3.jpg" alt="Khuzairi">
+            <h3>Director of Photography</h3>
+            <p>Khuzairi</p>
+        </article>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 - <b>SPUNKY STUDIO</b> ALL RIGHTS RESERVED</p>
+    </footer>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

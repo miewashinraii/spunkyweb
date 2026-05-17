@@ -1,0 +1,2774 @@
+/* FORCE final override: make page background pure black and remove colored tints */
+:root {
+  --bg: #000000 !important;
+  --bg-home: #000000 !important;
+  --sections-bg: #000000 !important;
+}
+
+/* ensure body/sections use pure black */
+html, body, .sections {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* neutralize any semi-opaque colored overlays that tint the page */
+.section.has-media::before,
+.section > .hero-overlay,
+section.about::before,
+.section.hero > .hero-overlay {
+  background: rgba(0,0,0,0.0) !important;
+}
+
+/* remove any accidental blend modes */
+* { background-blend-mode: normal !important; }
+
+:root{
+  --bg:#0f1724;
+  --muted:#6b7280;
+  --accent:#111827;
+  --accent-2:#000000000000;
+  --nav-accent:#FFFFFF; /* red used for large nav items on mobile */
+  --gap:24px;
+
+  /* responsive button size used by hamburger and home logo */
+  --btn-size: clamp(44px, 6.5vw, 52px);
+  --btn-radius: clamp(10px, 2.4vw, 12px);
+
+  /* increased custom size for the mini home button */
+  --home-btn-size: clamp(80px, 12vw, 120px); /* <-- bigger */
+  --home-logo-pad: 0.82; /* proportion of button used by the image (bigger image) */
+
+  /* section background color variables (home -> achievements -> about) */
+  --bg-home: #0f1724;
+  --bg-ach:  #f3f3f3;
+  --bg-about: #0b0b0b;
+  --sections-bg: var(--bg-home);
+}
+
+/* color system tuned to #000000 and #FFFFFF */
+:root{
+  --bg-home: #000000000000;
+  --bg-ach:  #cdcbcb;    /* light warm tint between white and red */
+  --bg-about:#000000000000;    /* stronger warm tint for "dramatic" end */
+  --sections-bg: var(--bg-home);
+
+  --nav-accent: #FFFFFF; /* primary accent (red) */
+  --accent: #111827;     /* main content text color */
+  --muted: #6b7280;
+
+  /* button sizes (existing) */
+  --btn-size: clamp(44px, 6.5vw, 52px);
+  --btn-radius: clamp(10px, 2.4vw, 12px);
+
+  /* home button independent size */
+  --home-btn-size: clamp(80px, 12vw, 120px);
+  --home-logo-pad: 0.82;
+}
+
+/* CONSOLIDATED VARIABLES + FONTS (fixed conflicts and cleaned duplicates) */
+:root{
+  /* core colors */
+  --bg: #000000;
+  --bg-home: #000000;
+  --sections-bg: #000000;
+  --bg-about: #000000;
+
+  --accent: #ffffff;
+  --muted: #6b7280;
+  --gap: 24px;
+
+  /* controls sizing */
+  --btn-size: clamp(44px, 6.5vw, 52px);
+  --btn-radius: clamp(10px, 2.4vw, 12px);
+  --home-btn-size: clamp(80px, 12vw, 120px);
+  --home-logo-pad: 0.82;
+
+  /* font stack (uses local loaded faces below) */
+  --font-sans: "CreatoDisplay", "DolceVita", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Load local font files (one @font-face per font). Prefer .woff2 for production if available. */
+@font-face {
+  font-family: "Walkway";
+  src: local("Walkway Bold"), local("Walkway-Bold"),
+       url("../assets/fonts/Walkway%20Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DolceVita";
+  src: local("Dolce Vita Light"), local("DolceVita-Light"),
+       url("../assets/fonts/Dolce%20Vita%20Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* use the loaded fonts with a fallback stack */
+:root {
+  --font-sans: "Walkway", "DolceVita", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  font-family: var(--font-sans);
+}
+
+/* San‑Francisco / Apple-like UI stack (prefers installed SF Pro / system UI) */
+@font-face{
+  /* prefer local installed SF fonts if available (no bundled fonts shipped) */
+  font-family: "SF Pro System";
+  src: local("SF Pro Text"), local("SF Pro Display"), local("San Francisco"), local("-apple-system");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* font variable and base application */
+:root {
+  --font-sans: "SF Pro System", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: #fff;
+}
+
+/* Base typography + background */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--accent);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* main sections background */
+.sections {
+  background: var(--sections-bg);
+  transition: background-color 300ms ease-in-out;
+}
+
+/* Final safety overrides to ensure pure black background (keeps cascade tidy) */
+html, body, .sections {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* nav toggle (hamburger) uses the red accent */
+.nav-toggle{
+  background: var(--nav-accent);
+  border: none;
+  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after{
+  background: #000000; /* high contrast on the red button */
+}
+
+/* mobile overlay nav: very subtle red-tinted white */
+.nav-menu{
+  background: rgba(255,35,29,0.04);
+  backdrop-filter: blur(6px);
+}
+
+/* mobile overlay links use red accent */
+.nav-menu a{
+  color: var(--nav-accent);
+}
+
+/* headings and main text on white backgrounds */
+.section h2,
+.title {
+  color: var(--accent);
+}
+
+/* small home button: transparent, larger image, no border/shadow */
+.home-btn{
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  width: var(--home-btn-size);
+  height: var(--home-btn-size);
+}
+#home-logo-small{
+  width: calc(var(--home-btn-size) * var(--home-logo-pad));
+  height: calc(var(--home-btn-size) * var(--home-logo-pad));
+  object-fit: contain;
+  display: block;
+}
+
+/* subtle focus styles using the accent */
+.nav-toggle:focus,
+.home-btn:focus {
+  outline: 2px solid rgba(255,35,29,0.18);
+  outline-offset: 2px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  /* background:linear-gradient(180deg,var(--bg),#000000000000); */
+  color:var(--accent);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+}
+
+/* Prevent the page itself from scrolling — let .sections handle it */
+html, body {
+  height: 100%;
+  margin: 0;
+  /* no global overflow:hidden here — non-home pages must scroll normally */
+}
+
+/* only the home page (body.fullpage) disables outer scroll so .sections becomes the single scroll container */
+body.fullpage {
+  overflow: hidden;
+}
+
+/* .sections becomes the single scroll container (home only) */
+.sections {
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+  background: var(--sections-bg);
+  transition: background-color 220ms linear;
+  will-change: background-color;
+}
+
+/* each section still snaps */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* stack header/content/footer */
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 6vw, 96px);
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
+/* Hero center */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(24px,6vw,96px);
+  text-align:center;
+}
+
+.brand{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  max-width:880px;
+}
+
+/* logo and title */
+.logo{width:110px;height:110px;flex-shrink:0}
+.title{
+  margin:0;
+  font-size:clamp(28px,5vw,48px);
+  letter-spacing:0.6px;
+  font-weight:700;
+}
+.tagline{
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(14px,2.6vw,18px);
+}
+
+/* down button */
+.down-btn{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 28px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: var(--nav-accent);
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+}
+.down-btn:focus{outline:2px solid rgba(255,35,29,0.18);border-radius:6px}
+
+/* section inner content */
+.section-inner{
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+}
+.section h2 { color: #FFFFFF; font-size: clamp(24px, 4vw, 40px); margin-bottom: 12px }
+.lead { color: #FFFFFF; max-width: 900px; margin: 0 auto 18px; }
+
+.section-inner-about {
+  width: 100%;
+  /* make the about section fill the viewport so the background "fits the screen" */
+  height: 100vh;
+  min-height: 60vh;                       /* fallback for very short viewports */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(24px, 8vh, 96px);
+  box-sizing: border-box;
+
+  /* background image behaviour */
+  background-image: url('assets/images/abt.JPG');
+  background-size: cover;                 /* fills area while preserving aspect */
+  background-position: center center;     /* focus the center of the image */
+  background-repeat: no-repeat;
+  background-attachment: scroll;          /* avoid fixed behaviour on mobile */
+}
+
+/* On narrow screens, avoid heavy cropping: fit whole image and allow letterboxing */
+@media (max-width: 900px) {
+  .section-inner-about {
+    background-size: contain;             /* show full image; may add top/bottom space */
+    background-position: center top;      /* prefer top for portrait layouts */
+    padding-top: clamp(18vh, 20vw, 80px); /* give room for content while image shows */
+    min-height: 56vh;
+  }
+}
+
+/* If you prefer the image always shown fully and want a consistent background color */
+.section-inner-about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);              /* use a subtle overlay if needed */
+  pointer-events: none;
+}
+
+/* STRONGER OVERLAY + TEXT SHADOWS (increase contrast for readability) */
+section.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* darker gradient for stronger shadow */
+  background: linear-gradient(
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.78) 40%,
+    rgba(0,0,0,0.80) 100%
+  );
+  pointer-events: none;
+}
+
+/* also darken hero overlay a bit so logo/text stand out on hero */
+.section.hero > .hero-overlay {
+  background: linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.28));
+}
+
+/* stronger text-shadow for headings and body copy in image sections */
+section.about .section-inner h2,
+section.about .section-inner p,
+section.about .section-inner .lead,
+.section.hero .section-inner h2,
+.section.hero .section-inner p,
+.section.hero .section-inner .lead {
+  color: #ffffff;
+  text-shadow:
+    0 18px 48px rgba(0,0,0,0.85),
+    0 6px 18px rgba(0,0,0,0.66),
+    0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* optional subtle backdrop for very small text blocks to guarantee legibility */
+.section-inner .text-backdrop {
+  background: rgba(0,0,0,0.28);
+  padding: 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* simple cards layout */
+.cards{
+  /* responsive grid that centers cards and adapts to viewport */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  justify-items: center;
+  align-items: start;     /* keep posters aligned to the top of each card */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card{
+  background: #000000;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 320px;       /* card width limit for nice columns */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;              /* tighter gap */
+}
+
+/* Make all poster images use the same portrait box and crop consistently */
+.cards { justify-items: center; align-items: start; } /* already present but keep for clarity */
+
+.card {
+  /* keep card layout stable */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:10px;
+}
+
+
+/* unified poster container: fixed portrait shape that scales responsively */
+.card .img-wrap {
+  width: 100%;
+  aspect-ratio: 2 / 3;                  /* portrait posters */
+  height: clamp(340px, 48vh, 720px);    /* responsive visual height */
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f8f8f8;                  /* neutral backdrop for letterboxing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ensure images always fit */
+.card .img-wrap img,
+.card > img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;      /* ensure whole poster is visible */
+  object-position: center;
+  display: block;
+  border-radius: 6px;
+}
+
+/* keep consistent sizing on small screens */
+@media (max-width: 900px) {
+  .card .img-wrap,
+  .card > img {
+    aspect-ratio: 3 / 4;
+    height: clamp(300px, 42vh, 640px);
+  }
+}
+
+/* Top-right nav toggle */
+.topbar{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:80; /* ensure toggle sits above the overlay */
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* make the toggle clearly visible on any background */
+.nav-toggle{
+  background:#FFFFFF;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 6px 18px rgba(17,24,39,0.06);
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: var(--btn-radius);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px;
+  cursor:pointer;
+  transition:transform .14s ease, background .12s ease;
+  z-index:90;
+}
+.nav-toggle:active{transform:scale(.98)}
+.nav-toggle:focus{outline:2px solid rgba(255,35,29,0.18);outline-offset:2px}
+
+/* scale hamburger bars relative to button size */
+.hamburger{
+  display:block;
+  width: calc(var(--btn-size) * 0.38); /* ~20px at 52px */
+  height: calc(var(--btn-size) * 0.04); /* ~2px */
+  background:#000000;
+  position:relative;
+}
+.hamburger::before,.hamburger::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height: calc(var(--btn-size) * 0.04);
+  background:#000000;
+}
+.hamburger::before{top: calc(-1 * var(--btn-size) * 0.115)}
+.hamburger::after{bottom: calc(-1 * var(--btn-size) * 0.115)}
+
+/* dropdown nav (desktop) / overlay nav (mobile) */
+/* Mobile-first: make nav a full-screen centered overlay */
+.nav-menu{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:48px;
+  padding:48px;
+  background:#FFFFFF; /* subtle gray overlay */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index:50;
+  transition:opacity .18s ease, transform .18s ease;
+  opacity:1;
+}
+
+/* Hide by default for assistive tech until opened */
+.nav-menu[hidden]{display:none !important; opacity:0; visibility:hidden}
+
+/* Large, bold, centered nav links (mobile overlay) */
+.nav-menu a{
+  color:#FFFFFF;
+  text-decoration:none;
+  font-weight:800;
+  font-size:clamp(22px,7vw,36px);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:8px 12px;
+  display:block;
+}
+
+/* Slight hover/active feedback */
+.nav-menu a:hover,
+.nav-menu a:focus{
+  filter:brightness(.92);
+  outline: none;
+}
+
+/* Responsive behavior: on wide screens show inline nav and hide toggle */
+@media(min-width:900px){
+  /* keep the toggle visible on desktop so user can open the overlay if desired */
+  .nav-toggle{display:flex}
+
+  .nav-menu{
+    position:static;
+    inset:auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+    gap:6px;
+    background:transparent;
+    padding:0;
+    box-shadow:none;
+  }
+
+  .nav-menu a{
+    color:#FFFFFF;
+    font-weight:600;
+    font-size:14px;
+    text-transform:none;
+    letter-spacing:0;
+    padding:8px 12px;
+    background:transparent;
+  }
+
+  /* restore small hamburger visuals not used on desktop */
+  .hamburger{background:var(--accent)}
+  .hamburger::before,.hamburger::after{background:var(--accent)}
+}
+
+#main-logo {
+  /* make the logo almost full-screen but keep aspect ratio and not exceed very large sizes */
+  width: min(90vmin, 92vw);
+  height: auto;
+  max-width: 1400px;
+  display:block;
+  margin:0 auto;
+}
+
+/* optional: hide title/tagline when logo occupies most of the screen (small devices) */
+@media (max-width:700px) {
+  .title,
+  .tagline {
+    display: none;
+  }
+
+  /* ensure hero spacing fits the large logo */
+  .hero { padding: 2vh 4vw; }
+}
+
+/* small home button (top-left) — same responsive size as nav-toggle */
+.home-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 120;
+  width: var(--home-btn-size);
+  height: var(--home-btn-size);
+  display: inline-grid;
+  place-items: center;
+  border-radius: calc(var(--home-btn-size) * 0.18);
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* ensure .home-btn isn't styled with border/background (you requested earlier) */
+.home-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 210;
+  width: var(--home-btn-size);
+  height: var(--home-btn-size);
+  display: inline-grid;
+  place-items: center;
+  border-radius: calc(var(--home-btn-size) * 0.18);
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* ensure the topbar sits above the sections */
+.topbar {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 210;
+}
+
+/* small adjustments for the hamburger and logo inside */
+#home-logo-small { width: calc(var(--home-btn-size) * var(--home-logo-pad)); height: auto; }
+
+/* hotspot at the top of the viewport — hover area to reveal controls */
+.top-hover-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12vh;                /* hover height — change to taste */
+  z-index: 200;
+  pointer-events: auto;
+  background: transparent;
+}
+
+/* start hidden; use visibility + opacity for smooth reveal */
+.topbar, .home-btn {
+  transition: opacity 200ms ease, transform 200ms ease;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+/* visible state when hovered AND scrolled to second section */
+.topbar.visible, .home-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* make sure the hotspot doesn't block normal interaction when controls are visible */
+.top-hover-zone:hover { cursor: default; }
+
+/* Push footer to the bottom of its section */
+.site-footer{
+  width:100%;
+  text-align:center;
+  margin-top: auto;       /* pushes footer to bottom inside the flex column */
+  padding:20px 12px;
+  color:#FFFFFF;
+  font-size:12px;
+  box-sizing: border-box;
+}
+
+/* If you want the about section content to start at top and footer at bottom */
+.section.about {
+  justify-content: flex-start;
+  padding-top: clamp(24px, 8vh, 96px);
+  padding-bottom: clamp(24px, 8vh, 96px);
+}
+
+/* media row: two-column layout for video + poster/details */
+.media-row {
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  justify-content:space-between;
+  width:100%;
+}
+.media-left {
+  flex: 1 1 60%;
+  min-width: 260px;
+}
+.media-right {
+  flex: 0 0 34%;
+  min-width: 220px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+}
+
+/* responsive video wrapper (16:9) */
+.video-wrapper {
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+}
+.video-wrapper iframe {
+  position:absolute;
+  top:0;left:0;width:100%;height:100%;border:0;
+}
+
+/* poster */
+.poster img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+/* details / credits area */
+.details { position:relative; }
+.accent-heading { color: #FFFFFF; margin: 6px 0 10px; font-size:1.05rem; }
+
+/* tighter paragraph spacing and readable size */
+.details p,
+.credits p {
+  margin:6px 0;
+  line-height:1.35;
+  color:var(--accent);
+  font-size:0.95rem;
+}
+
+/* collapsed credits: limit height to fit the viewport; show gradient fade */
+.credits {
+  max-height: calc(50vh);
+  overflow:hidden;
+  transition: max-height 320ms ease;
+  position:relative;
+  padding-right:6px;
+}
+
+/* expanded state */
+.credits.expanded { max-height: 2000px; }
+
+/* fade at bottom */
+.credits::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 56px;
+  background: linear-gradient(transparent, rgba(255,255,255,0.95));
+  display:block;
+}
+
+/* when expanded hide fade */
+.credits.expanded::after { display:none; }
+
+/* read-more button */
+.read-more {
+  margin-top:8px;
+  background: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  align-self:flex-start;
+  font-weight:600;
+}
+
+/* Projects 2x2 landscape banner grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 36px 48px;             /* row gap / column gap */
+  width: 100%;
+  max-width: 1200px;
+  margin: 24px auto 0;
+  align-items: start;
+  justify-items: center;
+}
+
+/* project card wrapper */
+.project-card {
+  width: 100%;
+  max-width: 920px; /* increased max width so banners are larger on wide screens */
+  display: block;
+}
+
+/* cinematic / rectangular film banners for project stills */
+.project-card {
+  max-width: 1100px; /* allow wider cinematic frames on large screens */
+  display: block;
+}
+
+.project-card .img-wrap {
+  width: 100%;
+  aspect-ratio: 21 / 9;                   /* cinematic widescreen (~2.33:1) */
+  height: clamp(180px, 28vh, 460px);      /* responsive visual height for cinematic crops */
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms ease, filter 320ms ease;
+}
+
+/* ensure images fill the cinematic frame (center-cropped) */
+.project-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* hover/active states (same but tuned for cinematic shape) */
+.project-card:hover .img-wrap,
+.project-card:focus-within .img-wrap {
+  transform: translateY(-8px) scale(1.06);
+  box-shadow: 0 40px 80px rgba(2,6,23,0.55), 0 10px 36px rgba(255,35,29,0.08);
+}
+.project-card:hover .img-wrap img,
+.project-card:focus-within .img-wrap img {
+  transform: scale(1.04);
+}
+
+/* Mobile: slightly taller ratio for better reading on narrow screens */
+@media (max-width: 900px) {
+  .project-card { max-width: 100%; }
+  .project-card .img-wrap {
+    aspect-ratio: 16 / 9;
+    height: clamp(180px, 42vh, 380px);
+  }
+}
+
+/* Cinematic 2-up layout for the second stills section */
+.section.stills.cinematic .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(420px, 1fr)); /* two wide columns */
+  gap: 40px 48px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 24px auto 0;
+  justify-items: center;
+  align-items: start;
+}
+
+/* larger cinematic banners */
+.section.stills.cinematic .project-card {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.section.stills.cinematic .project-card .img-wrap {
+  aspect-ratio: 21 / 9;                      /* cinematic widescreen */
+  height: clamp(200px, 30vh, 520px);
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 14px 44px rgba(0,0,0,0.6);
+}
+
+/* ensure images fill the cinematic frame */
+.section.stills.cinematic .project-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* hover effect scaled for bigger banners */
+.section.stills.cinematic .project-card:hover .img-wrap,
+.section.stills.cinematic .project-card:focus-within .img-wrap {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 44px 90px rgba(2,6,23,0.55), 0 12px 36px rgba(255,35,29,0.06);
+}
+
+/* responsive: single column on small screens */
+@media (max-width: 900px) {
+  .section.stills.cinematic .projects-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 18px; }
+  .section.stills.cinematic .project-card .img-wrap { aspect-ratio: 16 / 9; height: clamp(180px, 42vh, 360px); }
+}
+
+/* Ensure the About section background fits the screen and stays responsive */
+section.about {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: clamp(24px, 8vh, 96px);
+  width: 100%;
+
+  /* viewport sizing */
+  height: 100vh;        /* force to viewport height */
+  min-height: 60vh;
+
+  /* background image (fit to viewport) */
+  background-image: url('assets/images/abt.JPG');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+
+  /* show the whole image scaled to fit the viewport */
+  background-size: contain !important;
+
+  /* fallback bg color while image loads */
+  background-color: #000;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* on very wide screens, prefer cover so the image fills without huge letterboxes */
+@media (min-width:1400px) {
+  section.about { background-size: cover !important; }
+}
+
+/* keep content layer visible above the background */
+section.about > .section-inner,
+section.about .section-inner-about {
+  position: relative;
+  z-index: 1;
+}
+
+/* Replace background-image usage with a positioned <img> that fits the viewport */
+
+/* remove any background-image rule on section.about (if present) */
+section.about { background: var(--bg-about, #000); }
+
+/* positioned image that always shows the full photo (letterboxed if aspect differs) */
+.about-bg {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;   /* show whole image, no crop */
+  object-position: center;
+  display: block;
+  z-index: 0;
+  pointer-events: none;  /* allow clicks through to content */
+}
+
+/* ensure content sits above the image */
+section.about > .section-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(24px,8vh,96px);
+}
+
+/* force about section to match viewport so the img fits the screen */
+section.about {
+  position: relative;
+  height: 100vh;
+  min-height: 60vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #000; /* fallback for letterbox areas */
+}
+
+/* make bahtera section use a full-bleed background video that covers the whole section */
+.section.bahtera {
+  position: relative;      /* container for overlay */
+  overflow: visible;      /* let the section expand to the video height */
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #000; /* fallback while video loads */
+  padding: 0;             /* video will be flush */
+}
+
+/* video lives in flow and defines the section height */
+.bahtera-bg-video {
+  display: block;
+  width: 100%;
+  height: auto;           /* preserve natural aspect ratio */
+  object-fit: contain;    /* show full frames (change to 'cover' to fill/crop) */
+  object-position: center;
+  z-index: 0;
+  pointer-events: auto; /* <- enable interactions (play/pause) */
+}
+
+/* overlay content above the video */
+.section.bahtera .section-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(24px, 8vh, 96px);
+  pointer-events: auto;
+  color: #fff;
+}
+
+/* Responsive fallback: on small screens stack content below video if preferred */
+@media (max-width: 700px) {
+  .section.bahtera .section-inner {
+    position: relative;
+    inset: auto;
+    padding: 20px;
+  }
+}
+
+/* hero background image in the flow so section height is preserved */
+.section.hero { position: relative; height: 100vh; min-height:60vh; overflow: hidden; }
+.section.hero > .hero-bg { position: absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; pointer-events:none; }
+.section.hero > .hero-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:5; pointer-events:none; }
+
+/* Big main logo — larger, responsive and capped */
+#main-logo {
+  width: clamp(520px, 42vmin, 1100px); /* bigger default */
+  max-width: 94%;
+  height: auto;
+  display:block;
+  margin: 0 auto;
+  z-index: 30; /* above overlay */
+  pointer-events: auto;
+}
+
+/* Put laurels directly below the logo within the brand flow */
+.brand {
+  position: relative;
+  z-index: 30;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px; /* small gap between logo and laurels */
+}
+
+/* Laurels visible and above overlay */
+.laurels {
+  display: flex;
+  gap: clamp(22px, 5vw, 52px); /* slightly larger spacing for bigger laurels */
+  align-items: center;
+  justify-content: center;
+  z-index: 29;
+  pointer-events: none;
+  margin-top: 6px;
+}
+
+.laurel {
+  width: clamp(200px, 16vmin, 520px); /* increased base + responsive max */
+  height: auto;
+  display: block;
+  opacity: 1;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+@media (max-width: 900px) {
+  .laurel { width: clamp(110px, 24vmin, 220px); } /* keep mobile proportionate */
+}
+
+/* allow clicking the native video controls */
+.bahtera-bg-video {
+  pointer-events: auto; /* <- enable interactions (play/pause) */
+  z-index: 0;
+}
+
+/* ensure any transparent overlay or absolute content above the video doesn't block clicks */
+.section.bahtera > .hero-overlay,
+.section.bahtera .section-inner {
+  pointer-events: none; /* allow clicks to reach the video below */
+}
+
+/* if you need interactive UI in .section-inner, only disable pointer-events on the empty areas,
+   or give interactive elements pointer-events:auto and higher z-index */
+
+.stills-hover-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -6px);
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease, transform 220ms ease;
+  color: #fff;
+
+  /* dramatic, big and bold */
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 6.6vw, 72px); /* scales from small to very large */
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-transform: none; /* keep original casing; change to uppercase if desired */
+  padding: 8px 22px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.36));
+  backdrop-filter: blur(6px);
+  text-align: center;
+  white-space: nowrap;
+
+  /* dramatic multi-layered shadow for weight and depth */
+  text-shadow:
+    0 30px 60px rgba(0,0,0,0.75),
+    0 12px 30px rgba(0,0,0,0.55),
+    0 4px 8px rgba(0,0,0,0.45),
+    0 1px 2px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 40px rgba(2,6,23,0.6), inset 0 -4px 16px rgba(0,0,0,0.25);
+  transform-origin: center;
+}
+
+/* visible state: lift slightly and reveal */
+.stills-hover-title.visible {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  transition: opacity 200ms cubic-bezier(.2,.9,.2,1), transform 200ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* ensure hover title is fully removed when not hovered (no lingering pointer-events) */
+.stills-hover-title {
+  pointer-events: none; /* already set but reinforce */
+  will-change: opacity, transform;
+}
+
+/* description under the hover title (smaller, centered, appears only on hover) */
+.stills-hover-desc {
+  position: absolute;
+  top: calc(6vh + 6vmin); /* sits below the dramatic title */
+  left: 50%;
+  transform: translate(-50%, -6px);
+  z-index: 61;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+  color: rgba(255,255,255,0.92);
+  font-weight: 600;
+  font-size: clamp(14px, 2.2vw, 20px);
+  line-height: 1.2;
+  text-align: center;
+  max-width: min(78%, 880px);
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.36);
+  backdrop-filter: blur(4px);
+  text-shadow: 0 6px 14px rgba(0,0,0,0.55);
+}
+
+/* visible state */
+.stills-hover-desc.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* small-screen adjustments */
+@media (max-width: 700px) {
+  .stills-hover-desc {
+    top: calc(10vh + 4vmin);
+    font-size: clamp(13px, 3.8vw, 16px);
+    padding: 6px 10px;
+    max-width: 88%;
+  }
+}
+
+/* Scope dimming & hover effects to cinematic stills only */
+
+/* Fade other stills when one is hovered (only in cinematic grids) */
+.section.stills.cinematic .projects-grid:hover .project-card:not(:hover) {
+  opacity: 0.28;
+  filter: saturate(0.8) contrast(0.95) grayscale(0.04);
+  transform: translateY(0) scale(0.995);
+  transition: opacity 260ms ease, filter 260ms ease, transform 260ms ease;
+}
+
+/* Keep the hovered card fully visible and slightly lifted (override) */
+.section.stills.cinematic .projects-grid .project-card:hover,
+.section.stills.cinematic .projects-grid .project-card:focus-within,
+.section.stills.cinematic .projects-grid .project-card.focused {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateY(-8px) scale(1.06) !important;
+  pointer-events: auto;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms ease, opacity 260ms ease;
+}
+
+/* JS-assisted keyboard accessibility: dimming via grid-level class (cinematic only) */
+.section.stills.cinematic .projects-grid.grid-dim .project-card {
+  opacity: 0.28;
+  filter: saturate(0.8) contrast(0.95) grayscale(0.04);
+  transform: translateY(0) scale(0.995);
+}
+.section.stills.cinematic .projects-grid.grid-dim .project-card.focused {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-8px) scale(1.06);
+  pointer-events: auto;
+}
+
+/* Only show dramatic title/desc for cinematic stills */
+.section.stills.cinematic .stills-hover-title { pointer-events: none; }
+.section.stills.cinematic .stills-hover-desc { pointer-events: none; }
+
+/* ensure other (non-cinematic) stills keep normal behavior:
+   (this rule is optional - enforces full opacity for non-cinematic grids) */
+.section.stills:not(.cinematic) .project-card {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+/* Prevent non-cinematic (4-up) stills from enlarging on hover/focus */
+.section.stills:not(.cinematic) .project-card,
+.section.stills:not(.cinematic) .project-card .img-wrap,
+.section.stills:not(.cinematic) .project-card .img-wrap img {
+  transform: none !important;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+/* Keep hover/focus from scaling or lifting these cards; preserve a subtle shadow if desired */
+.section.stills:not(.cinematic) .project-card:hover,
+.section.stills:not(.cinematic) .project-card:focus-within {
+  transform: none !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure any previously added glow/after overlay does not enlarge or appear */
+.section.stills:not(.cinematic) .project-card .img-wrap::after {
+  opacity: 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* unobtrusive unmute button overlay */
+.video-unmute {
+  position: absolute;
+  right: clamp(16px, 3vw, 32px);
+  bottom: clamp(16px, 3vh, 32px);
+  z-index: 60;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.video-unmute[hidden] { display: none; }
+
+/* small hover/focus affordance */
+.video-unmute:hover, .video-unmute:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+/* Trailer preview styling */
+.section.trailer-preview {
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: clamp(36px, 8vh, 80px) 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trailer-poster {
+  position: relative;
+  max-width: 960px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.trailer-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+.trailer-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.26), rgba(0,0,0,0.5));
+  pointer-events: none;
+  z-index: 1;
+}
+.trailer-copy {
+  max-width: 960px;
+  text-align: center;
+  margin: 8px auto 0;
+  z-index: 2;
+}
+.trailer-copy h2 { font-size: clamp(28px, 5.6vw, 48px); margin: 6px 0 12px; font-weight:700; }
+.trailer-copy .lead { font-size: clamp(14px, 2.2vw, 18px); color: #ddd; margin-bottom: 18px; }
+.trailer-actions { display:flex; gap:12px; justify-content:center; align-items:center; }
+.btn { cursor: pointer; border: none; padding: 10px 18px; border-radius: 8px; font-weight:600;}
+.btn-watch { background: linear-gradient(90deg,#ffffff,#dfdfdf); color:#111; box-shadow: 0 8px 28px rgba(255,90,90,0.14); }
+.btn-details { background: linear-gradient(90deg,#b4b3b3,#dfdfdf); color:#111; box-shadow: 0 8px 28px rgba(255,90,90,0.14); }
+.btn-secondary { background: rgba(255,255,255,0.04); color:#fff; border:1px solid rgba(255,255,255,0.06); }
+
+/* responsive */
+@media (min-width: 900px) {
+  .section.trailer-preview { padding-top: clamp(60px, 12vh, 120px); padding-bottom: clamp(40px, 10vh, 80px); }
+  .trailer-copy { margin-top: 18px; }
+}
+@media (max-width: 700px) {
+  .trailer-copy h2 { font-size: clamp(20px, 6.4vw, 28px); }
+  .trailer-poster { margin-bottom: 14px; }
+}
+
+/* Trailer poster: preserve portrait dimensions (don't force full-bleed landscape) */
+.section.trailer-preview .section-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 18px;
+  /* reduce top/bottom reserve so poster can grow more */
+  max-height: calc(100vh - 80px); /* allow more vertical space for a larger poster */
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Larger, prominent poster */
+.section.trailer-preview .trailer-poster {
+  width: clamp(820px, 70vw, 1400px);   /* larger min and max */
+  max-width: 92%;
+  height: auto;
+  max-height: calc(100vh - 80px);      /* small reserved space for headings/padding */
+  padding: 16px;
+  border-radius: 12px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 48px 140px rgba(0,0,0,0.78);
+  margin: 0;
+}
+
+/* poster image: fully visible, letterboxed if needed */
+.section.trailer-preview .trailer-poster img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+/* Desktop: allow even larger framed poster */
+@media (min-width: 900px) {
+  .section.trailer-preview .trailer-poster {
+    width: clamp(920px, 64vw, 1600px);
+    max-height: calc(100vh - 60px);
+  }
+}
+
+/* Mobile: keep poster large but constrained */
+@media (max-width: 700px) {
+  .section.trailer-preview .trailer-poster {
+    width: clamp(480px, 92vw, 980px);
+    max-height: calc(100vh - 80px);
+  }
+}
+
+/* Donation section styling */
+.section.donation {
+  background: #000;
+  color: #fff;
+  padding: clamp(36px, 8vh, 80px) 18px;
+  box-sizing: border-box;
+}
+
+.section.donation .section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.donation-grid {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* QR wrapper: portrait-ish, keep image fully visible (no crop) */
+.qr-wrap {
+  flex: 0 0 auto;
+  width: clamp(220px, 26vw, 360px);
+  height: auto;
+  max-height: calc(60vh);
+  padding: 12px;
+  background: #0a0a0a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.6);
+}
+
+.qr-wrap img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+/* donate info */
+.donate-info {
+  max-width: 560px;
+  text-align: left;
+}
+.donate-info .lead,
+.donate-copy { color: #ddd; margin-bottom: 8px; }
+.donate-link a { color: #fff; word-break: break-all; text-decoration: underline; }
+
+/* actions */
+.donation-actions { display:flex; gap:12px; margin-top:12px; }
+
+/* Responsive: stack on small screens */
+@media (max-width: 900px) {
+  .donation-grid { flex-direction: column; gap: 18px; }
+  .donate-info { text-align: center; }
+}
+
+/* Stills — make images take up more of the viewport and reduce background breathing room */
+.section.stills {
+  padding-top: clamp(12px, 4vh, 28px);
+  padding-bottom: clamp(12px, 4vh, 28px);
+}
+
+/* grid uses more of the viewport width */
+.section.stills .projects-grid {
+  width: min(1400px, 96vw);
+  max-width: 96vw;
+  margin: 12px auto 0;
+  gap: 28px 36px;
+  grid-template-columns: repeat(2, minmax(360px, 1fr));
+  justify-items: center;
+}
+
+/* make cards expand to column width (use full available space) */
+.section.stills .project-card {
+  width: 100%;
+  max-width: none;
+}
+
+/* NON-CINEMATIC (4-up) — large landscape banners but no hover scale (stills stay stable) */
+.section.stills:not(.cinematic) .project-card .img-wrap {
+  aspect-ratio: 21 / 9;
+  height: clamp(260px, 38vh, calc(100vh - 160px));
+  max-height: calc(100vh - 140px);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* CINEMATIC (2-up) — extra large cinematic frames that dominate viewport but never overflow */
+.section.stills.cinematic .projects-grid {
+  width: min(1600px, 98vw);
+  grid-template-columns: repeat(2, minmax(480px, 1fr));
+  gap: 36px 48px;
+  margin: 18px auto 0;
+}
+
+.section.stills.cinematic .project-card .img-wrap {
+  aspect-ratio: 21 / 9;
+  height: clamp(380px, 64vh, calc(100vh - 120px));
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Ensure images fill their frames visually (keep object-fit:cover for stills) */
+.section.stills .project-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Keep the earlier rule: non-cinematic stills should not enlarge on hover */
+.section.stills:not(.cinematic) .project-card,
+.section.stills:not(.cinematic) .project-card .img-wrap,
+.section.stills:not(.cinematic) .project-card .img-wrap img {
+  transform: none !important;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+/* Responsive: single column on smaller screens, keep stills tall but bounded */
+@media (max-width: 900px) {
+  .section.stills .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    width: calc(100% - 40px);
+    padding: 0 20px;
+  }
+
+  .section.stills:not(.cinematic) .project-card .img-wrap {
+    aspect-ratio: 16 / 9;
+    height: clamp(220px, 44vh, calc(100vh - 160px));
+    max-height: calc(100vh - 140px);
+  }
+
+  .section.stills.cinematic .project-card .img-wrap {
+    aspect-ratio: 16 / 9;
+    height: clamp(260px, 56vh, calc(100vh - 120px));
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* Poster spotlight section */
+.section.trailer-spotlight {
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #000 !important;
+  color: #fff;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+.section.trailer-spotlight .section-inner {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  text-align: left;
+}
+
+/* Left poster */
+.section.trailer-spotlight .poster-column {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #000 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.section.trailer-spotlight .poster-frame {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #000 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.section.trailer-spotlight .poster-img {
+  width: auto !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: 100vh !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  display: block !important;
+  background: #000 !important;
+}
+
+/* Right column */
+.section.trailer-spotlight .copy-column {
+  position: relative !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #000 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* Slideshow background */
+.right-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 1;
+  background: #000;
+}
+
+.right-slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  filter: brightness(1) contrast(1.05);
+  animation: bahteraSlide 15s infinite;
+}
+
+.right-slideshow img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.right-slideshow img:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.right-slideshow img:nth-child(3) {
+  animation-delay: 10s;
+}
+
+.right-slideshow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.26) 48%, rgba(0,0,0,0.38) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.42) 100%);
+}
+
+@keyframes bahteraSlide {
+  0% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  32% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  42% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Text content */
+.copy-content {
+  position: relative;
+  z-index: 3;
+  width: min(620px, 86%);
+  margin-left: clamp(18px, 2.2vw, 42px);
+  text-align: left;
+}
+
+.poster-title {
+  margin: 0 0 42px;
+  font-size: clamp(44px, 5vw, 88px);
+  line-height: 0.95;
+  font-weight: 900;
+  color: #fff;
+}
+
+.poster-tag,
+.poster-lead {
+  max-width: 620px;
+  margin: 0 0 42px;
+  font-size: clamp(18px, 1.45vw, 25px);
+  line-height: 1.28;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.poster-actions {
+  margin-top: 8px;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.btn-watch {
+  background: #f4f4f4;
+  color: #111;
+  box-shadow: 0 12px 34px rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile */
+@media (max-width: 980px) {
+  .section.trailer-spotlight {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+  }
+
+  .section.trailer-spotlight .section-inner {
+    width: 100vw !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .section.trailer-spotlight .poster-column,
+  .section.trailer-spotlight .poster-frame {
+    width: 100vw !important;
+    height: 65vh !important;
+    min-height: 65vh !important;
+    justify-content: center !important;
+  }
+
+  .section.trailer-spotlight .poster-img {
+    width: auto !important;
+    height: 65vh !important;
+    max-width: 100vw !important;
+    max-height: 65vh !important;
+    object-position: center center !important;
+  }
+
+  .section.trailer-spotlight .copy-column {
+    width: 100vw !important;
+    height: auto !important;
+    min-height: 48vh !important;
+    padding: 48px 22px !important;
+    justify-content: center !important;
+  }
+
+  .copy-content {
+    width: min(620px, 100%);
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .poster-title {
+    margin-bottom: 24px;
+    font-size: clamp(38px, 12vw, 64px);
+  }
+
+  .poster-tag,
+  .poster-lead {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 26px;
+    font-size: clamp(16px, 4.5vw, 21px);
+  }
+}
+/* Swap layout: slideshow/text left, poster right */
+.section.trailer-spotlight .section-inner {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+}
+
+.section.trailer-spotlight .copy-column {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+
+.section.trailer-spotlight .poster-column {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+
+.section.trailer-spotlight .poster-frame {
+  justify-content: flex-end !important;
+}
+
+.section.trailer-spotlight .poster-img {
+  object-position: right center !important;
+}
+
+/* Move writing away from the poster edge */
+.copy-content {
+  margin-left: clamp(42px, 5vw, 96px) !important;
+  margin-right: clamp(24px, 4vw, 72px) !important;
+}
+
+/* On mobile, keep poster first then text/slideshow below */
+@media (max-width: 980px) {
+  .section.trailer-spotlight .poster-column {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .section.trailer-spotlight .copy-column {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  .copy-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+/* Full slideshow section below poster page */
+.section.bahtera-slideshow-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0 !important;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bahtera-gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: bahteraGalleryFade 18s infinite;
+}
+
+.bahtera-gallery-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.bahtera-gallery-slide:nth-child(2) {
+  animation-delay: 6s;
+}
+
+.bahtera-gallery-slide:nth-child(3) {
+  animation-delay: 12s;
+}
+
+.bahtera-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.9) contrast(1.05);
+  transform: scale(1.04);
+}
+
+.section.bahtera-slideshow-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 42%, rgba(0,0,0,0.28) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.64) 100%);
+}
+
+.bahtera-gallery-content {
+  position: relative;
+  z-index: 3;
+  width: min(680px, 86vw);
+  margin-left: clamp(28px, 7vw, 120px);
+  text-align: left;
+}
+
+.bahtera-gallery-content h1 {
+  margin: 0 0 36px;
+  font-size: clamp(52px, 8vw, 124px);
+  line-height: 0.92;
+  font-weight: 900;
+  color: #fff;
+}
+
+.bahtera-gallery-content p {
+  max-width: 640px;
+  margin: 0 0 30px;
+  font-size: clamp(18px, 1.6vw, 28px);
+  line-height: 1.25;
+  color: rgba(255,255,255,0.94);
+}
+
+@keyframes bahteraGalleryFade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  34% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+
+  44% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .section.bahtera-slideshow-section {
+    justify-content: center;
+  }
+
+  .bahtera-gallery-content {
+    width: min(620px, 88vw);
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .bahtera-gallery-content h1 {
+    margin-bottom: 24px;
+    font-size: clamp(44px, 14vw, 72px);
+  }
+
+  .bahtera-gallery-content p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+    font-size: clamp(16px, 4.5vw, 21px);
+  }
+}
+/* Fix stills sections overflowing horizontally */
+.section.stills,
+.section.stills.cinematic {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding-left: clamp(16px, 4vw, 48px) !important;
+  padding-right: clamp(16px, 4vw, 48px) !important;
+}
+
+.section.stills .section-inner,
+.section.stills.cinematic .section-inner {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  overflow: hidden;
+}
+
+.section.stills .projects-grid,
+.section.stills.cinematic .projects-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 3vw, 36px) !important;
+}
+
+.section.stills .project-card,
+.section.stills.cinematic .project-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.section.stills .project-card .img-wrap,
+.section.stills.cinematic .project-card .img-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Prevent hover scaling from pushing cards outside viewport */
+.section.stills.cinematic .projects-grid .project-card:hover,
+.section.stills.cinematic .projects-grid .project-card:focus-within,
+.section.stills.cinematic .projects-grid .project-card.focused {
+  transform: translateY(-6px) scale(1.02) !important;
+}
+
+/* Mobile: one column only */
+@media (max-width: 900px) {
+  .section.stills .projects-grid,
+  .section.stills.cinematic .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* Global viewport overflow fix */
+html,
+body,
+.sections {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+.section {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Stills sections: always fit inside viewport */
+.section.stills,
+.section.stills.cinematic {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh;
+  padding: clamp(28px, 4vh, 48px) clamp(20px, 4vw, 56px) !important;
+  overflow: hidden !important;
+}
+
+.section.stills .section-inner,
+.section.stills.cinematic .section-inner {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+}
+
+.stills-section-title {
+  margin: 0 0 clamp(18px, 3vh, 32px);
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(22px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* 4-image stills grid */
+.section.stills .projects-grid,
+.section.stills.cinematic .projects-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 2.6vw, 36px) !important;
+  box-sizing: border-box;
+  overflow: hidden !important;
+}
+
+.section.stills .project-card,
+.section.stills.cinematic .project-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.section.stills .project-card .img-wrap,
+.section.stills.cinematic .project-card .img-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: clamp(190px, 32vh, 340px) !important;
+  max-height: none !important;
+  aspect-ratio: 21 / 9;
+  overflow: hidden !important;
+}
+
+/* Prevent hover scale from creating page overflow */
+.section.stills .project-card:hover,
+.section.stills .project-card:focus-within,
+.section.stills.cinematic .project-card:hover,
+.section.stills.cinematic .project-card:focus-within,
+.section.stills.cinematic .project-card.focused {
+  transform: translateY(-4px) scale(1.01) !important;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .section.stills,
+  .section.stills.cinematic {
+    padding: 28px 18px !important;
+  }
+
+  .section.stills .projects-grid,
+  .section.stills.cinematic .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section.stills .project-card .img-wrap,
+  .section.stills.cinematic .project-card .img-wrap {
+    height: clamp(180px, 28vh, 300px) !important;
+    aspect-ratio: 16 / 9;
+  }
+}
+/* About section background: fill entire viewport */
+.section.about {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #000 !important;
+}
+
+.section.about .about-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  z-index: 0 !important;
+}
+
+.section.about::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+}
+
+.section.about > .section-inner,
+.section.about .site-footer {
+  position: relative !important;
+  z-index: 2 !important;
+}
+/* FINAL FIX: slideshow-only section alignment */
+.section.bahtera-slideshow-section {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+  color: #fff !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* Background slides */
+.bahtera-gallery-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0;
+  animation: bahteraGalleryFade 18s infinite;
+}
+
+.bahtera-gallery-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.bahtera-gallery-slide:nth-child(2) {
+  animation-delay: 6s;
+}
+
+.bahtera-gallery-slide:nth-child(3) {
+  animation-delay: 12s;
+}
+
+.bahtera-gallery-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  filter: brightness(0.9) contrast(1.05);
+  transform: scale(1.04);
+}
+
+/* Overlay */
+.section.bahtera-slideshow-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0.42) 42%, rgba(0,0,0,0.28) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.58) 100%);
+}
+
+/* Text block - vertically centered, left aligned */
+.bahtera-gallery-content {
+  position: relative !important;
+  z-index: 3 !important;
+  width: min(620px, 86%) !important;
+  margin-left: clamp(42px, 5vw, 96px) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  transform: none !important;
+}
+
+.bahtera-gallery-content h1 {
+  margin: 0 0 42px !important;
+  font-size: clamp(44px, 5vw, 88px) !important;
+  line-height: 0.95 !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+}
+
+.bahtera-gallery-content p {
+  max-width: 620px !important;
+  margin: 0 0 42px !important;
+  font-size: clamp(18px, 1.45vw, 25px) !important;
+  line-height: 1.28 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.bahtera-gallery-content .btn {
+  margin-top: 8px !important;
+}
+
+@keyframes bahteraGalleryFade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  34% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+
+  44% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .section.bahtera-slideshow-section {
+    justify-content: center !important;
+  }
+
+  .bahtera-gallery-content {
+    width: min(620px, 88vw) !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .bahtera-gallery-content h1 {
+    margin-bottom: 24px !important;
+    font-size: clamp(38px, 12vw, 64px) !important;
+  }
+
+  .bahtera-gallery-content p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 26px !important;
+    font-size: clamp(16px, 4.5vw, 21px) !important;
+  }
+}
+/* Mood & Tone gallery controls */
+.stills-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 clamp(18px, 3vh, 32px);
+}
+
+.stills-section-title {
+  margin: 0;
+  color: rgba(255,255,255,0.86);
+  font-size: clamp(22px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.stills-nav-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.stills-nav-btn:hover,
+.stills-nav-btn:focus {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+}
+
+.stills-gallery-grid {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.stills-gallery-grid.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+/* Donation background media */
+.section.donation {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.donation-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.section.donation::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.556), rgba(0,0,0,0.42)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0,0,0,0.72));
+  pointer-events: none;
+}
+
+.section.donation .section-inner {
+  position: relative;
+  z-index: 2;
+}
+/* Reusable logo + thin section writing */
+.section-kicker {
+  position: absolute;
+  top: clamp(22px, 4vh, 46px);
+  left: clamp(28px, 4vw, 72px);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.84);
+  font-size: clamp(13px, 1vw, 16px);
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.section-kicker-logo {
+  width: clamp(28px, 3vw, 46px);
+  height: clamp(28px, 3vw, 46px);
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.section {
+  position: relative;
+}
+
+.section.project-details {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(92px, 12vh, 140px) clamp(24px, 7vw, 120px) clamp(48px, 8vh, 96px);
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.96), rgba(0,0,0,0.82)),
+    url("assets/images/stills-8.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.project-details-inner {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
+  gap: clamp(36px, 7vw, 110px);
+  align-items: start;
+}
+
+.project-details-heading {
+  position: sticky;
+  top: 110px;
+  text-align: left;
+}
+
+.project-details-heading .eyebrow {
+  margin: 0 0 16px;
+  color: rgba(255,255,255,0.58);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.project-details-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(48px, 6vw, 104px);
+  line-height: 0.95;
+  font-weight: 900;
+}
+
+.project-details-content {
+  display: grid;
+  gap: clamp(24px, 4vh, 44px);
+  text-align: left;
+}
+
+.detail-block {
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding-top: 22px;
+}
+
+.detail-block h3,
+.project-meta dt {
+  margin: 0 0 12px;
+  color: rgba(255,255,255,0.62);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.detail-block p {
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(18px, 1.35vw, 24px);
+  line-height: 1.42;
+}
+
+.project-meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.project-meta div {
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding-top: 18px;
+}
+
+.project-meta dd {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(17px, 1.2vw, 22px);
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .section.project-details {
+    padding: 92px 22px 48px;
+  }
+
+  .project-details-inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .project-details-heading {
+    position: relative;
+    top: auto;
+  }
+
+  .project-meta {
+    grid-template-columns: 1fr;
+  }
+}
+.project-details-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+/* About / Team carousel */
+.section.about.team-section {
+  position: relative !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding: clamp(76px, 10vh, 110px) clamp(24px, 5vw, 80px) 58px !important;
+  background: #000 !important;
+  overflow: hidden !important;
+  justify-content: center !important;
+}
+
+.section.about.team-section .about-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 0.18;
+  filter: grayscale(1) brightness(0.55);
+  z-index: 0 !important;
+}
+
+.section.about.team-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0,0,0,0.72);
+  pointer-events: none;
+}
+
+.team-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.team-header {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  margin-bottom: clamp(28px, 5vh, 54px);
+}
+
+.team-header h2 {
+  margin: 0;
+  text-align: center;
+  color: rgba(255,255,255,0.72);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 4vw, 48px);
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.team-nav-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(22px, 4vw, 44px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.team-grid.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.team-card {
+  text-align: center;
+  color: #fff;
+}
+
+.team-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5.2;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) contrast(1.05);
+  border: 1px solid rgba(255,255,255,0.35);
+  display: block;
+}
+
+.team-card h3 {
+  margin: 22px 0 6px;
+  color: #fff;
+  font-size: clamp(18px, 1.6vw, 25px);
+  line-height: 1.15;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.team-card p {
+  margin: 0;
+  color: rgba(255,255,255,0.84);
+  font-size: clamp(16px, 1.2vw, 21px);
+  text-transform: uppercase;
+}
+
+.section.about.team-section .site-footer {
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  z-index: 2 !important;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .section.about.team-section {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 88px 20px 70px !important;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .team-header {
+    grid-template-columns: 44px 1fr 44px;
+  }
+
+  .team-header h2 {
+    letter-spacing: 0.14em;
+  }
+}
+.section.donation .donation-note {
+  text-align: center !important;
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.section.donation .donate-info {
+  text-align: center !important;
+}
+.project-details-poster {
+  display: block;
+  width: clamp(150px, 14vw, 230px);
+  height: auto;
+  margin-top: clamp(24px, 4vh, 42px);
+  margin-left: 35%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.42);
+  opacity: 0.92;
+}
+
+@media (max-width: 900px) {
+  .project-details-poster {
+    width: clamp(130px, 38vw, 210px);
+  }
+}
+/* Donation: center QR and place thank-you below */
+.section.donation .donation-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  width: 100% !important;
+  margin-top: clamp(24px, 4vh, 42px) !important;
+}
+
+.section.donation .qr-wrap {
+  margin: 0 auto !important;
+}
+
+.section.donation .donation-note {
+  width: min(620px, 90vw) !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  color: rgba(255,255,255,0.82) !important;
+  font-size: clamp(15px, 1.2vw, 19px) !important;
+  line-height: 1.4 !important;
+}
+
+/* optional: hide the right-side info column if it still exists
+.section.donation .donate-info {
+  display: none !important;
+} */
