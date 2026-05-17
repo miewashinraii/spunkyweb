@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // previously we had an IIFE here that attempted play() and forced `video.muted = true` on failure.
   // That behavior caused the video to stay muted on load. Kept intentionally empty so the
   // initBahteraAutoplay() block later handles unmuted autoplay + muted fallback.
-  initLazyVideos();
-  
+
   // nav safety
   if (toggle && menu) {
     menu.hidden = true;
@@ -428,33 +427,6 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(section);
   });
 
-function initLazyVideos() {
-  const videos = document.querySelectorAll('video source[data-src]');
-
-  const loadVideo = (source) => {
-    if (!source.dataset.src) return;
-    source.src = source.dataset.src;
-    source.parentElement.load();
-  };
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      const video = entry.target;
-      const sources = video.querySelectorAll('source[data-src]');
-
-      sources.forEach(loadVideo);
-
-      io.unobserve(video);
-    });
-  }, {
-    threshold: 0.15
-  });
-
-  document.querySelectorAll('video').forEach(v => io.observe(v));
-}
-
   // ensure bahtera video attempts to autoplay reliably and controls remain interactive
   (function initBahteraAutoplay() {
     const section = document.getElementById('bahtera');
@@ -650,23 +622,23 @@ function initLazyVideos() {
 
   if (!grid || !prevBtn || !nextBtn) return;
 
-  const pages = [
-    [
-      { role: 'Director', name: 'Abid Danish', img: 'assets/images/stills-1.jpg' },
-      { role: 'Producer', name: 'Nurin Mysara', img: 'assets/images/stills-2.jpg' },
-      { role: 'Director of Photography', name: 'Khuzairi', img: 'assets/images/stills-3.jpg' }
-    ],
-    [
-      { role: 'Production Designer', name: 'Alyssia Cheang', img: 'assets/images/stills-4.jpg' },
-      { role: 'Post-Pro Supervisor', name: 'Nashita Afra', img: 'assets/images/stills-5.jpg' },
-      { role: 'Assistant Director', name: 'Ali', img: 'assets/images/stills-6.jpg' }
-    ],
-    [
-      { role: 'Sound Designer', name: 'Ali', img: 'assets/images/stills-7.jpg' },
-      { role: 'Editor', name: 'Ali', img: 'assets/images/stills-8.jpg' },
-      { role: 'Art Assistant', name: 'Ali', img: 'assets/images/stills-9.jpg' }
-    ]
-  ];
+  // const pages = [
+  //   [
+  //     { role: 'Director', name: 'Abid Danish', img: 'assets/images/abid.png' },
+  //     { role: 'Producer', name: 'Nurin Mysara', img: 'assets/images/nurin.jpg' },
+  //     { role: 'Director of Photography', name: 'Khuzairi', img: 'assets/images/khuzairi.jpg' }
+  //   ],
+  //   [
+  //     { role: 'Production Designer', name: 'Alyssia Cheang', img: 'assets/images/alyssia.jpg' },
+  //     { role: 'Post-Pro Supervisor', name: 'Nashita Afra', img: 'assets/images/nashita.jpg' },
+  //     { role: 'Assistant Director', name: 'Ali', img: 'assets/images/ali.jpg' }
+  //   ],
+  //   [
+  //     { role: 'Sound Designer', name: 'Ali', img: 'assets/images/stills-7.jpg' },
+  //     { role: 'Editor', name: 'Ali', img: 'assets/images/stills-8.jpg' },
+  //     { role: 'Art Assistant', name: 'Ali', img: 'assets/images/stills-9.jpg' }
+  //   ]
+  // ];
 
   let currentPage = 0;
 

@@ -22,20 +22,14 @@
 
     <!-- <nav id="navMenu" class="nav-menu" hidden> -->
       <!-- changed: same-page anchor to section #achievements (Project : Our Bahtera) -->
-      <!-- <a href="#bahtera" data-scroll>Project : Our Bahtera</a>
-      <a href="#work" data-scroll>Our Work</a>
-      <a href="#contact" data-scroll>Contact</a>
-      <a href="#faq" data-scroll>FAQ</a>
-    </nav> -->
+     
   </header>
 
   <!-- sections container: snap scrolling -->
   <div class="sections" id="sections">
     <section class="section hero has-media" id="home">
       <!-- full-bleed background + overlay (direct children of section) -->
-    <video class="hero-bg" muted loop playsinline preload="none" poster="assets/images/poster-bahtera.jpeg">
-      <source data-src="assets/videos/BTS1.mp4" type="video/mp4">
-    </video>      
+    <video class="hero-bg" src="assets/videos/BTS1.mp4" autoplay loop muted playsinline></video>   
     <!-- <img class="about-bg" src="assets/images/background.jpg" alt="" aria-hidden="true"> -->
 
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -86,50 +80,7 @@
         </div>
     </section>
 
-    <section class="section trailer-spotlight" id="bahtera-preview">
-        <div class="section-kicker">
-            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
-            <span>Project : Bahtera</span>
-        </div>
-    <div class="section-inner">
-        <div class="poster-column">
-        <div class="poster-frame">
-            <img
-            src="assets/images/poster-bahtera.jpeg"
-            alt="Bahtera — Teaser Poster"
-            class="poster-img"
-            />
-        </div>
-        </div>
-
-        <div class="copy-column">
-        <div class="right-slideshow" aria-hidden="true">
-            <img src="assets/images/stills-2.jpg" alt="">
-            <img src="assets/images/stills-3.jpg" alt="">
-            <img src="assets/images/stills-4.jpg" alt="">
-        </div>
-
-        <div class="copy-content">
-            <h1 class="poster-title">Bahtera</h1>
-
-            <p class="poster-tag">
-            A missing mother. A forbidden forest. An ancient ritual that pulls a family into a nightmare.
-            </p>
-
-            <p class="poster-lead">
-            Siblings Abang and Melur tumble into a ritual-fueled descent — deception, possession and a tragic reckoning.
-            </p>
-
-            <div class="poster-actions">
-            <a id="play-bahtera-btn" class="btn btn-watch" href="#bahtera">Watch Teaser</a>
-            <a class="btn btn-details" href="#project-detail">Details</a>
-            </div>
-        </div>
-        </div>
-    </div>
-    </section>
-
-    <section class="section project-details-2" id="project-details-2">
+    <section class="section project-details" id="project-details">
         <img class="project-details-bg" src="assets/images/stills-10.jpg" alt="" aria-hidden="true">
         <div class="section-kicker">
             <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
@@ -181,65 +132,6 @@
         </div>
     </section>    
 
-    <section class="section project-details" id="project-details">
-        <img class="project-details-bg" src="assets/images/stills-10.jpg" alt="" aria-hidden="true">
-        <div class="section-kicker">
-            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
-            <span>Project Details</span>
-        </div>
-
-        <div class="project-details-inner">
-            <div class="project-details-heading">
-            <p class="eyebrow">Bahtera</p>
-            <h2>Project Details</h2>
-            <img
-                class="project-details-poster"
-                src="assets/images/poster-bahtera.jpeg"
-                alt="Bahtera poster"
-            >
-            </div>
-
-            <div class="project-details-content">
-            <article class="detail-block detail-logline">
-                <h3>Logline</h3>
-                <p>
-                After people begin disappearing in a forbidden forest, two siblings are forced to venture inside
-                to save their missing mother, only to encounter a mysterious woman with a deadly agenda.
-                </p>
-            </article>
-
-            <article class="detail-block detail-synopsis">
-                <h3>Short Synopsis</h3>
-                <p>
-                Driven by the disappearance of their mother, siblings Abang and Melur venture into a forbidden forest.
-                Meanwhile Bayu, a mysterious woman with white eyes, performs a ritual. After discovering their mother’s
-                hairpin, tusuk konde, in the forest, Melur falls mysteriously ill, allowing Bayu to manipulate the situation
-                by sending Abang towards a dangerous cave in search of their mother. This deception leads to a horrific
-                climax where Abang finds Melur in the cave, seemingly possessed. She brutally attacks him. The struggle
-                between these siblings ends in total tragedy.
-                </p>
-            </article>
-
-            <dl class="project-meta">
-                <div>
-                <dt>Genre</dt>
-                <dd>Folklore Horror, Mystery</dd>
-                </div>
-                <div>
-                <dt>Format</dt>
-                <dd>Digital</dd>
-                </div>
-                <div>
-                <dt>Runtime</dt>
-                <dd>15 Minutes</dd>
-                </div>
-            </dl>
-            </div>
-        </div>
-    </section>
-
-
-
     <section class="section bahtera has-media" id="bahtera">
         <div class="section-kicker">
             <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
@@ -256,6 +148,7 @@
         aria-hidden="false"
       >
         <source src="assets/videos/bahtera.mp4" type="video/mp4">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/zNYL03GPyxQ?si=hosDSsrhsMxJQqRz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         Your browser does not support the video tag.
       </video>
 
@@ -352,7 +245,7 @@
               <span class="btn btn-secondary" aria-hidden="true">Scan QR to donate</span>
             </div> -->
             <p class="donation-note" style="margin-top:12px;color:#ccc;font-size:0.95rem;">
-              Thank you — every contribution helps bring this film to life.
+              Our crowdfund campaign is open from 16 May 2026 - 16 June 2026. This crowdfund will go to the production of our Final Year Project, Bahtera. Thank you for your support !
             </p>
           </div>
         </div>
@@ -368,31 +261,10 @@
     </div>
 
     <div class="team-inner">
-        <div class="team-header">
-        <button class="team-nav-btn" id="teamPrev" type="button" aria-label="Previous team members">‹</button>
-        <h2>Our Team</h2>
-        <button class="team-nav-btn" id="teamNext" type="button" aria-label="Next team members">›</button>
-        </div>
-
-        <div class="team-grid" id="teamGrid">
-        <article class="team-card">
-            <img src="assets/images/stills-1.jpg" alt="Abid Danish">
-            <h3>Director</h3>
-            <p>Abid Danish</p>
-        </article>
-
-        <article class="team-card">
-            <img src="assets/images/stills-2.jpg" alt="Nurin Mysara">
-            <h3>Producer</h3>
-            <p>Nurin Mysara</p>
-        </article>
-
-        <article class="team-card">
-            <img src="assets/images/stills-3.jpg" alt="Khuzairi">
-            <h3>Director of Photography</h3>
-            <p>Khuzairi</p>
-        </article>
-        </div>
+      <img id="main-logo" src="assets/images/clapper.png" alt="Spunky Studio Logo" class="logo">
+      <h2 class="team-notes">GET IN TOUCH WITH SPUNKY STUDIO !</h2>
+      <h3 class="team-notes">artntv.work@gmail.com</h3>
+      <btn class="btn-connect">Contact Us</btn>
     </div>
 
     <footer class="site-footer">

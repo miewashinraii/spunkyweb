@@ -2772,3 +2772,22 @@ body,
 .section.donation .donate-info {
   display: none !important;
 } */
+
+.team-notes {
+  margin-top: clamp(28px, 5vh, 54px);
+  color: rgba(255,255,255,0.72);
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.0;
+  text-align: center;
+}
+.btn-connect {
+  background: #f4f4f4;
+  color: #111;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+}
