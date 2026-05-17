@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // previously we had an IIFE here that attempted play() and forced `video.muted = true` on failure.
   // That behavior caused the video to stay muted on load. Kept intentionally empty so the
   // initBahteraAutoplay() block later handles unmuted autoplay + muted fallback.
-
+  initLazyVideos();
+  
   // nav safety
   if (toggle && menu) {
     menu.hidden = true;
@@ -427,34 +428,31 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(section);
   });
 
-  function lazyLoadBahteraVideo() {
-  const section = document.getElementById('bahtera');
-  const video = section ? section.querySelector('.bahtera-bg-video') : null;
-  if (!video) return;
+function initLazyVideos() {
+  const videos = document.querySelectorAll('video source[data-src]');
 
-  const source = video.querySelector('source');
-
-  let loaded = false;
+  const loadVideo = (source) => {
+    if (!source.dataset.src) return;
+    source.src = source.dataset.src;
+    source.parentElement.load();
+  };
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !loaded) {
-        loaded = true;
+      if (!entry.isIntersecting) return;
 
-        // move data-src → src ONLY when needed
-        if (source && source.dataset.src) {
-          source.src = source.dataset.src;
-          video.load(); // triggers actual download
-        }
+      const video = entry.target;
+      const sources = video.querySelectorAll('source[data-src]');
 
-        io.disconnect();
-      }
+      sources.forEach(loadVideo);
+
+      io.unobserve(video);
     });
   }, {
-    threshold: 0.2
+    threshold: 0.15
   });
 
-  io.observe(section);
+  document.querySelectorAll('video').forEach(v => io.observe(v));
 }
 
   // ensure bahtera video attempts to autoplay reliably and controls remain interactive

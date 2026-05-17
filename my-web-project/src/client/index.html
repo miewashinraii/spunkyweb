@@ -20,21 +20,23 @@
       <span class="hamburger"></span>
     </button>
 
-    <nav id="navMenu" class="nav-menu" hidden>
+    <!-- <nav id="navMenu" class="nav-menu" hidden> -->
       <!-- changed: same-page anchor to section #achievements (Project : Our Bahtera) -->
-      <a href="#bahtera" data-scroll>Project : Our Bahtera</a>
+      <!-- <a href="#bahtera" data-scroll>Project : Our Bahtera</a>
       <a href="#work" data-scroll>Our Work</a>
       <a href="#contact" data-scroll>Contact</a>
       <a href="#faq" data-scroll>FAQ</a>
-    </nav>
+    </nav> -->
   </header>
 
   <!-- sections container: snap scrolling -->
   <div class="sections" id="sections">
     <section class="section hero has-media" id="home">
       <!-- full-bleed background + overlay (direct children of section) -->
-      <video class="hero-bg" src="assets/videos/BTS1.mp4" alt="" aria-hidden="true" autoplay loop muted playsinline></video>
-      <!-- <img class="about-bg" src="assets/images/background.jpg" alt="" aria-hidden="true"> -->
+    <video class="hero-bg" muted loop playsinline preload="none" poster="assets/images/poster-bahtera.jpeg">
+      <source data-src="assets/videos/BTS1.mp4" type="video/mp4">
+    </video>      
+    <!-- <img class="about-bg" src="assets/images/background.jpg" alt="" aria-hidden="true"> -->
 
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -120,14 +122,14 @@
 
             <div class="poster-actions">
             <a id="play-bahtera-btn" class="btn btn-watch" href="#bahtera">Watch Teaser</a>
-            <a class="btn btn-details" href="#project-details">Details</a>
+            <a class="btn btn-details" href="#project-detail">Details</a>
             </div>
         </div>
         </div>
     </div>
     </section>
 
-    <section class="section project-details" id="project-details">
+    <section class="section project-details-2" id="project-details-2">
         <img class="project-details-bg" src="assets/images/stills-10.jpg" alt="" aria-hidden="true">
         <div class="section-kicker">
             <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
@@ -331,8 +333,8 @@
             <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
             <span>Support Us</span>
         </div>
-        <video class="donation-bg" autoplay muted loop playsinline aria-hidden="true">
-            <source src="assets/videos/BTS2.mp4" type="video/mp4">
+        <video class="donation-bg" autoplay muted loop playsinline>
+          <source src="assets/videos/BTS2.mp4">
         </video>
       <div class="section-inner">
         <h2>Support Bahtera — Donate via DuitNow</h2>
