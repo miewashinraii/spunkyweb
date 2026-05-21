@@ -751,6 +751,20 @@ section.about .section-inner .lead,
   top:0;left:0;width:100%;height:100%;border:0;
 }
 
+/* Responsive YouTube fallback wrapper */
+.youtube-fallback-wrapper {
+  position:relative;
+  width:100%;
+  padding-top:56.25%; /* 16:9 aspect ratio */
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+}
+.youtube-fallback-wrapper iframe {
+  position:absolute;
+  top:0; left:0; width:100%; height:100%; border:0;
+}
+
 /* poster */
 .poster img {
   width:100%;
@@ -2867,16 +2881,160 @@ body,
   transform: translateY(-3px);
 }
 .youtube-fallback-wrapper {
-  display: none; /* Keep hidden until error event changes state */
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+.youtube-fallback-wrapper iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: 0;
 }
 
-.youtube-fallback-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
+
+/* FINAL FIX: About contact layout, button no longer overlaps footer */
+.section.about.team-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding: clamp(72px, 9vh, 100px) clamp(20px, 5vw, 72px) 22px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+
+.section.about.team-section .about-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 0.14 !important;
+  filter: grayscale(1) brightness(0.5) !important;
+  z-index: 0 !important;
+}
+
+.section.about.team-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.76);
+  pointer-events: none;
+}
+
+.section.about.team-section .section-kicker {
+  z-index: 8 !important;
+}
+
+.section.about.team-section .team-inner {
+  position: relative !important;
+  z-index: 5 !important;
+
+  width: min(920px, 100%) !important;
+  min-height: 0 !important;
+  height: auto !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.section.about.team-section .team-inner #main-logo,
+.section.about.team-section .team-inner .logo {
+  width: clamp(170px, 22vw, 330px) !important;
+  max-width: 68vw !important;
+  height: auto !important;
+  margin: 0 0 clamp(24px, 4vh, 40px) !important;
+}
+
+.section.about.team-section .team-title {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: clamp(28px, 3.7vw, 54px) !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: uppercase !important;
+}
+
+.section.about.team-section .team-email {
+  margin: clamp(18px, 3vh, 28px) 0 0 !important;
+  color: rgba(255,255,255,0.7) !important;
+  font-size: clamp(15px, 1.2vw, 20px) !important;
+}
+
+.section.about.team-section .btn-connect {
+  position: relative !important;
+  z-index: 6 !important;
+  margin-top: clamp(24px, 4vh, 38px) !important;
+  margin-bottom: 0 !important;
+}
+
+.section.about.team-section .site-footer {
+  position: relative !important;
+  z-index: 5 !important;
+
+  width: 100% !important;
+  margin: clamp(16px, 2.5vh, 24px) 0 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  color: rgba(255,255,255,0.48) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  pointer-events: none !important;
+}
+
+.section.about.team-section .site-footer p {
+  margin: 0 !important;
+}
+
+/* Extra protection for shorter browser heights */
+@media (max-height: 760px) {
+  .section.about.team-section {
+    padding-top: 64px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .section.about.team-section .team-inner #main-logo,
+  .section.about.team-section .team-inner .logo {
+    width: clamp(130px, 18vw, 250px) !important;
+    margin-bottom: 20px !important;
+  }
+
+  .section.about.team-section .team-title {
+    font-size: clamp(24px, 3vw, 42px) !important;
+  }
+
+  .section.about.team-section .team-email {
+    margin-top: 14px !important;
+  }
+
+  .section.about.team-section .btn-connect {
+    margin-top: 18px !important;
+    padding: 13px 32px !important;
+  }
+
+  .section.about.team-section .site-footer {
+    margin-top: 12px !important;
+  }
 }

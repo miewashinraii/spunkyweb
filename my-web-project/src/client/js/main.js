@@ -494,41 +494,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('play-bahtera-btn');
     const bahteraSection = document.getElementById('bahtera');
     const video = bahteraSection ? bahteraSection.querySelector('.bahtera-bg-video') : null;
+    const fallback = document.getElementById('youtubeFallback');
     const soundToggle = document.getElementById('bahteraSoundToggle');
-    if (!btn || !video || !bahteraSection) return;
+
+
+    // Attach error listener if video exists
+    if (video) {
+      video.addEventListener('error', () => {
+        if (fallback) fallback.hidden = false;
+        video.pause();
+        video.style.display = 'none';
+      });
+    }
+
+    if (!btn || !bahteraSection) return;
 
     btn.addEventListener('click', async (e) => {
       e.preventDefault();
       // scroll trailer into view
       bahteraSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      // try to play unmuted. If blocked, fallback to muted and show toggle.
-      try {
-        video.muted = false;
-        await video.play();
-        if (soundToggle) {
-          soundToggle.hidden = false;
-          soundToggle.textContent = 'Mute';
-          soundToggle.setAttribute('aria-pressed', 'false');
-        }
-      } catch (err) {
-        // autoplay with sound blocked — fallback
+      if (video) {
+        // try to play unmuted. If blocked, fallback to muted and show toggle.
         try {
-          video.muted = true;
+          video.muted = false;
           await video.play();
           if (soundToggle) {
             soundToggle.hidden = false;
-            soundToggle.textContent = 'Unmute';
-            soundToggle.setAttribute('aria-pressed', 'true');
+            soundToggle.textContent = 'Mute';
+            soundToggle.setAttribute('aria-pressed', 'false');
           }
-        } catch (err2) {
-          // couldn't autoplay — reveal toggle so user can start playback manually
-          if (soundToggle) {
-            soundToggle.hidden = false;
-            soundToggle.textContent = 'Unmute';
-            soundToggle.setAttribute('aria-pressed', 'true');
+        } catch (err) {
+          // autoplay with sound blocked — fallback
+          try {
+            video.muted = true;
+            await video.play();
+            if (soundToggle) {
+              soundToggle.hidden = false;
+              soundToggle.textContent = 'Unmute';
+              soundToggle.setAttribute('aria-pressed', 'true');
+            }
+          } catch (err2) {
+            // couldn't autoplay — reveal toggle so user can start playback manually
+            if (soundToggle) {
+              soundToggle.hidden = false;
+              soundToggle.textContent = 'Unmute';
+              soundToggle.setAttribute('aria-pressed', 'true');
+            }
           }
         }
+      } else if (fallback) {
+        // Ensure fallback is visible when video is unavailable
+        fallback.hidden = false;
       }
     });
   })();
