@@ -29,8 +29,10 @@
   <div class="sections" id="sections">
     <section class="section hero has-media" id="home">
       <!-- full-bleed background + overlay (direct children of section) -->
-    <video class="hero-bg" src="assets/videos/BTS1.mp4" autoplay loop muted playsinline></video>   
-    <!-- <img class="about-bg" src="assets/images/background.jpg" alt="" aria-hidden="true"> -->
+    <video class="hero-bg" autoplay loop muted playsinline>
+      <source src="assets/videos/BTS1.mp4" type="video/mp4">
+    </video>
+        <!-- <img class="about-bg" src="assets/images/background.jpg" alt="" aria-hidden="true"> -->
 
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -101,6 +103,12 @@
                   Bahtera is a short film that explores themes of family and sibling relationships through a Nusantara folk-horror approach. It is inspired by traditional cultural concepts such as kuda kepang and barongan, which are often associated with ritualistic, spiritual, and mystical elements within Nusantara communities. Although these performances are not directly featured, Bahtera draws from their atmosphere and cultural significance to shape the film’s visual identity and emotional tone.
                 </p>
             </article>
+            <article class="detail-block detail-casts">
+                <h3>Casts</h3>
+                <p>
+                  Syafie Naswip, Khayrisyah Kemal, Ali
+                </p>
+            </article>
 
             <dl class="project-meta">
                 <div>
@@ -121,30 +129,36 @@
     </section>    
 
     <section class="section bahtera has-media" id="bahtera">
-        <div class="section-kicker">
-            <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
-            <span>Official Teaser</span>
+      <div class="section-kicker">
+          <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+          <span>Official Teaser</span>
+      </div>
+
+      <div class="teaser-media-container">
+          <video
+            id="bahteraPlayer"
+            class="bahtera-bg-video"
+            controls
+            autoplay
+            loop
+            playsinline
+            preload="auto"
+            poster="assets/images/poster-bahtera.jpeg"
+            aria-hidden="false"
+          >
+            <source src="assets/videos/bahtera.mp4" type="video/mp4" onerror="handleVideoError()">
+          </video>
+    <!-- Fallback Youtube Player Container (Hidden by default in CSS) -->
+          <div id="youtubeFallback" class="youtube-fallback-wrapper" hidden>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/zNYL03GPyxQ?si=6ErUg9vI2voAsaAN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
         </div>
-      <video
-        class="bahtera-bg-video"
-        controls
-        autoplay
-        loop
-        playsinline
-        preload="auto"
-        poster="assets/images/poster-bahtera.jpeg"
-        aria-hidden="false"
-      >
-        <source src="assets/videos/bahtera.mp4" type="video/mp4">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/zNYL03GPyxQ?si=hosDSsrhsMxJQqRz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        Your browser does not support the video tag.
-      </video>
 
       <!-- sound toggle shown when the section/video is active -->
       <button class="video-sound-toggle" id="bahteraSoundToggle" aria-pressed="false" aria-label="Toggle sound" hidden>Mute</button>
     </section>
 
-    <section class="section stills cinematic" id="stills-2">
+    <!-- <section class="section stills cinematic" id="stills-2">
         <div class="section-kicker">
             <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
             <span>Mains</span>
@@ -167,7 +181,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="section stills" id="stills">
         <div class="section-kicker">
@@ -241,26 +255,49 @@
     </section>
 
     <section class="section about team-section has-media" id="about">
-    <img class="about-bg" src="assets/images/abt.JPG" alt="" aria-hidden="true">
 
-    <div class="section-kicker">
-        <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
-        <span>About Us</span>
-    </div>
+      <img class="about-bg" src="assets/images/abt.JPG" alt="" aria-hidden="true">
 
-    <div class="team-inner">
-      <img id="main-logo" src="assets/images/clapper.png" alt="Spunky Studio Logo" class="logo">
-      <h2 class="team-notes">GET IN TOUCH WITH SPUNKY STUDIO !</h2>
-      <h3 class="team-notes">artntv.work@gmail.com</h3>
-      <btn class="btn-connect">Contact Us</btn>
-    </div>
+      <div class="section-kicker">
+          <img src="assets/images/spunkymini.png" alt="Spunky Studio" class="section-kicker-logo">
+          <span>About Us</span>
+      </div>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 - <b>SPUNKY STUDIO</b> ALL RIGHTS RESERVED</p>
-    </footer>
+      <div class="team-inner">
+
+        <img
+          id="main-logo"
+          src="assets/images/clapper.png"
+          alt="Spunky Studio Logo"
+          class="logo"
+        >
+
+        <h2 class="team-title">
+          GET IN TOUCH WITH SPUNKY STUDIO !
+        </h2>
+
+        <p class="team-email">
+          artntv.work@gmail.com
+        </p>
+
+        <a href="https://wa.link/ya4pup" class="btn-connect">
+          Contact Us
+        </a>
+
+      </div>
+
+      <footer class="site-footer">
+          <p>&copy; 2026 - <b>SPUNKY STUDIO</b> ALL RIGHTS RESERVED</p>
+      </footer>
+
     </section>
   </div>
 
   <script src="js/main.js"></script>
 </body>
 </html>
+<!-- Laurels - besarkan - done --> 
+ <!-- remove mains - char page - done -->
+  <!-- add fallback img section 1 and donation -->
+   <!-- adjust contact us button -->
+    <!-- add casts in project details page syafie naswip n khayrisyah kemal and - done -->

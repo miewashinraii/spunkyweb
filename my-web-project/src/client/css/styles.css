@@ -692,14 +692,21 @@ section.about .section-inner .lead,
 .top-hover-zone:hover { cursor: default; }
 
 /* Push footer to the bottom of its section */
-.site-footer{
-  width:100%;
-  text-align:center;
-  margin-top: auto;       /* pushes footer to bottom inside the flex column */
-  padding:20px 12px;
-  color:#FFFFFF;
-  font-size:12px;
-  box-sizing: border-box;
+.site-footer {
+  width: 100%;
+
+  margin-top: 80px;
+  padding-bottom: 30px;
+
+  text-align: center;
+
+  color: rgba(255,255,255,0.55);
+
+  font-size: 13px;
+  letter-spacing: 0.08em;
+
+  position: relative;
+  z-index: 5;
 }
 
 /* If you want the about section content to start at top and footer at bottom */
@@ -1096,6 +1103,9 @@ section.about {
   display: block;
   opacity: 1;
   transition: transform 180ms ease, opacity 180ms ease;
+  width: clamp(180px, 22vw, 340px);
+  opacity: 0.92;
+  filter: brightness(1.05);
 }
 
 @media (max-width: 900px) {
@@ -2608,10 +2618,42 @@ body,
 }
 
 .team-inner {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 120px 20px 80px;
   position: relative;
-  z-index: 2;
-  width: min(1180px, 100%);
-  margin: 0 auto;
+  z-index: 5;
+}
+
+.team-title {
+  color: #fff;
+
+  font-size: clamp(34px, 4vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+
+  margin: 0;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.team-email {
+  margin-top: 28px;
+
+  color: rgba(255,255,255,0.72);
+
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 500;
+
+  letter-spacing: 0.03em;
 }
 
 .team-header {
@@ -2781,13 +2823,60 @@ body,
   text-align: center;
 }
 .btn-connect {
-  background: #f4f4f4;
-  color: #111;
-  font-weight: 800;
-  font-size: 18px;
-  padding: 12px 22px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  padding: 18px 40px;
+
+  background: rgba(255,255,255,0.08);
+
+  border: 1px solid rgba(255,255,255,0.22);
+
+  color: #fff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(10px);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.btn-connect:hover {
+  background: #fff;
+  color: #000;
+
+  border-color: #fff;
+
+  transform: translateY(-3px);
+}
+.youtube-fallback-wrapper {
+  display: none; /* Keep hidden until error event changes state */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.youtube-fallback-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
