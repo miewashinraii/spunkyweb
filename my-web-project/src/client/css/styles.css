@@ -764,7 +764,18 @@ section.about .section-inner .lead,
   position:absolute;
   top:0; left:0; width:100%; height:100%; border:0;
 }
+/* Center the video container inside its parent */
+.teaser-media-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
+/* Ensure the responsive wrapper is centered */
+.youtube-fallback-wrapper,
+.video-wrapper {
+  margin: 0 auto;
+}
 /* poster */
 .poster img {
   width:100%;
@@ -3036,5 +3047,54 @@ body,
 
   .section.about.team-section .site-footer {
     margin-top: 12px !important;
+  }
+}
+/* --------------------------------------------------------------
+   RESPONSIVE 16:9 CONTAINER (used by .video-wrapper and
+   .youtube-fallback-wrapper)
+   -------------------------------------------------------------- */
+.video-wrapper,
+.youtube-fallback-wrapper {
+  position: relative;          /* needed for absolute‑positioned iframe */
+  width: 100%;                 /* full width of the parent element */
+  max-width: 100%;             /* never exceed parent width */
+  padding-top: 56.25%;         /* 9 / 16 = 0.5625 → 56.25% creates a 16:9 box */
+  background: #000;            /* dark background while loading */
+  border-radius: 12px;         /* optional – matches your existing style */
+  overflow: hidden;            /* hide overflow of the iframe */
+}
+
+/* The iframe itself – stretches to cover the wrapper */
+.video-wrapper iframe,
+.youtube-fallback-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* --------------------------------------------------------------
+   ENSURE PARENT CONTAINERS ARE NOT RESTRICTING WIDTH
+   -------------------------------------------------------------- */
+.teaser-media-container {
+  /* Let it grow/shrink freely */
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;               /* centre it on larger screens */
+}
+
+/* If the .section has a max‑width, remove or enlarge it */
+.section.bahtera {
+  width: 100%;
+  max-width: none;              /* allow full‑width on mobile */
+}
+
+/* OPTIONAL: add a little vertical spacing on tiny screens */
+@media (max-width: 480px) {
+  .section.bahtera {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
